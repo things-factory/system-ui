@@ -13,6 +13,7 @@ class SystemInfo extends connect(store)(PageView) {
     return [
       css`
         :host {
+          overflow: auto;
         }
 
         .module {
