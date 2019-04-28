@@ -34,7 +34,7 @@ class SystemInfo extends connect(store)(PageView) {
 
   render() {
     return html`
-      ${this.modules.reverse().map(
+      ${this.modules.map(
         m => html`
           <div class="module">
             <div>
