@@ -59,7 +59,7 @@ class SystemInfo extends connect(store)(PageView) {
   }
 
   stateChanged(state) {
-    this.modules = state.factoryModule.modules
+    this.modules = state.app.modules
   }
 }
 
