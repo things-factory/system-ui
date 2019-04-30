@@ -27,10 +27,10 @@ class SystemInfo extends connect(store)(PageView) {
     ]
   }
 
-  get tools() {
-    return html`
-      <label>System Information</label>
-    `
+  get context() {
+    return {
+      title: 'System Information'
+    }
   }
 
   render() {
