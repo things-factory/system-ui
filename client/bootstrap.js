@@ -8,7 +8,12 @@ export default function bootstrap() {
   store.dispatch({
     type: ADD_MORENDA,
     morenda: {
-      name: 'System Brief.',
+      icon: html`
+        <mwc-icon>info</mwc-icon>
+      `,
+      name: html`
+        <i18n-msg msgid="label.system brief"></i18n-msg>
+      `,
       template: html`
         <system-morenda></system-morenda>
       `

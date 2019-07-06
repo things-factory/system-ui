@@ -1,6 +1,7 @@
 import { LitElement, html, css } from 'lit-element'
 
 import { ENV } from '@things-factory/system-base'
+import '@things-factory/i18n-base'
 
 class SystemMorenda extends LitElement {
   static get properties() {
@@ -13,8 +14,8 @@ class SystemMorenda extends LitElement {
 
   render() {
     return html`
-      <div>App Ver. : ${ENV['APP-VERSION']}-${ENV['NODE-ENV']}</div>
-      <div>LICENSE : ${ENV['APP-LICENSE']}</div>
+      <div><i18n-msg msgid="label.version"></i18n-msg> : ${ENV['APP-VERSION']}-${ENV['NODE-ENV']}</div>
+      <div><i18n-msg msgid="label.license"></i18n-msg> : ${ENV['APP-LICENSE']}</div>
     `
   }
 }
