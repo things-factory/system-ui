@@ -12,7 +12,7 @@ export default function bootstrap() {
         <mwc-icon>info</mwc-icon>
       `,
       name: html`
-        <i18n-msg msgid="label.system brief"></i18n-msg>
+        <i18n-msg msgid="field.system brief"></i18n-msg>
       `,
       template: html`
         <system-morenda></system-morenda>
