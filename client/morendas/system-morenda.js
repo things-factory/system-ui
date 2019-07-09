@@ -14,8 +14,8 @@ class SystemMorenda extends LitElement {
 
   render() {
     return html`
-      <div><i18n-msg msgid="label.version"></i18n-msg> : ${ENV['APP-VERSION']}-${ENV['NODE-ENV']}</div>
-      <div><i18n-msg msgid="label.license"></i18n-msg> : ${ENV['APP-LICENSE']}</div>
+      <div><i18n-msg msgid="field.version"></i18n-msg> : ${ENV['APP-VERSION']}-${ENV['NODE-ENV']}</div>
+      <div><i18n-msg msgid="field.license"></i18n-msg> : ${ENV['APP-LICENSE']}</div>
     `
   }
 }
