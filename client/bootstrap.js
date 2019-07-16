@@ -1,21 +1,16 @@
 import { html } from 'lit-html'
 import { store } from '@things-factory/shell'
-import { ADD_MORENDA } from '@things-factory/more-base'
-
-import './morendas/system-morenda'
+import { ADD_SETTING } from '@things-factory/setting-base'
 
 export default function bootstrap() {
+  import('./partials/system-let')
+
   store.dispatch({
-    type: ADD_MORENDA,
-    morenda: {
-      icon: html`
-        <mwc-icon>info</mwc-icon>
-      `,
-      name: html`
-        <i18n-msg msgid="field.system brief"></i18n-msg>
-      `,
+    type: ADD_SETTING,
+    setting: {
+      seq: 0,
       template: html`
-        <system-morenda></system-morenda>
+        <system-let></system-let>
       `
     }
   })
