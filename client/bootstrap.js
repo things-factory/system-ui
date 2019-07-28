@@ -2,9 +2,9 @@ import { html } from 'lit-html'
 import { store } from '@things-factory/shell'
 import { ADD_SETTING } from '@things-factory/setting-base'
 
-export default function bootstrap() {
-  import('./partials/system-let')
+import './partials/system-let'
 
+export default function bootstrap() {
   store.dispatch({
     type: ADD_SETTING,
     setting: {
