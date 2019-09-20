@@ -9,22 +9,31 @@ class SystemLet extends LitElement {
       :host {
         display: block;
 
-        background-color: #e5e5e5;
-        height: 30px;
-        padding: 20px 0px 20px 0px;
-        text-align: center;
+        background-color: var(--setting-info-background-color);
+        padding: var(--setting-content-padding);
+        font: var(--setting-info-font);
+        color: var(--setting-info-color);
       }
-
-      p {
-        margin: 0;
+      :host * {
+        vertical-align: middle;
+      }
+      mwc-icon {
+        font-size: 14px;
+        color: var(--setting-info-color);
+      }
+      [positionR] {
+        float: right;
       }
     `
   }
 
   render() {
     return html`
-      <p><i18n-msg msgid="field.version"></i18n-msg> : ${ENV['APP-VERSION']}-${ENV['NODE-ENV']}</p>
-      <p><i18n-msg msgid="field.license"></i18n-msg> : ${ENV['APP-LICENSE']}</p>
+      <span>
+        <mwc-icon>info</mwc-icon>
+        <i18n-msg msgid="field.version"></i18n-msg> : ${ENV['APP-VERSION']}-${ENV['NODE-ENV']}
+      </span>
+      <span positionR><i18n-msg msgid="field.license"></i18n-msg> : ${ENV['APP-LICENSE']}</span>
     `
   }
 }
