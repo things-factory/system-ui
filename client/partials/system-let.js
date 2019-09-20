@@ -17,9 +17,20 @@ class SystemLet extends LitElement {
       :host * {
         vertical-align: middle;
       }
+      div {
+        padding: 2px;
+      }
       mwc-icon {
         font-size: 14px;
         color: var(--setting-info-color);
+      }
+      strong {
+        color: var(--setting-info-appname-color);
+      }
+      span {
+        display: block;
+        text-indent: 18px;
+        font-size: 12px;
       }
       [positionR] {
         float: right;
@@ -29,11 +40,15 @@ class SystemLet extends LitElement {
 
   render() {
     return html`
-      <span>
+      <div>
         <mwc-icon>info</mwc-icon>
-        <i18n-msg msgid="field.version"></i18n-msg> : ${ENV['APP-VERSION']}-${ENV['NODE-ENV']}
-      </span>
-      <span positionR><i18n-msg msgid="field.license"></i18n-msg> : ${ENV['APP-LICENSE']}</span>
+        <strong>OPA-APP</strong> <i18n-msg msgid="field.version"></i18n-msg> : ${ENV['APP-VERSION']}-${ENV['NODE-ENV']}
+      </div>
+      <div>
+        <mwc-icon>copyright</mwc-icon> HatioSEA Inc.
+        <span>OPA-APP is built on several <a href="#">open source software</a></span>
+      </div>
+      <!-- <span positionR><i18n-msg msgid="field.license"></i18n-msg> : ${ENV['APP-LICENSE']}</span> -->
     `
   }
 }
