@@ -2,6 +2,8 @@ import { LitElement, html, css } from 'lit-element'
 
 import { ENV } from '@things-factory/system-base'
 import '@things-factory/i18n-base'
+import './opensource-license'
+import { openPopup } from '@things-factory/layout-base'
 
 class SystemLet extends LitElement {
   static get styles() {
@@ -39,17 +41,45 @@ class SystemLet extends LitElement {
   }
 
   render() {
+    var appTitle = ENV['APP-NAME'] || 'things factory'
+    if (appTitle.indexOf('@things-factory/') == 0) {
+      appTitle = appTitle.substr(16)
+    }
+    appTitle = appTitle.toUpperCase()
+
     return html`
       <div>
         <mwc-icon>info</mwc-icon>
-        <strong>OPA-APP</strong> <i18n-msg msgid="field.version"></i18n-msg> : ${ENV['APP-VERSION']}-${ENV['NODE-ENV']}
+        <strong>${appTitle}</strong> <i18n-msg msgid="field.version"></i18n-msg> :
+        ${ENV['APP-VERSION']}-${ENV['NODE-ENV']}
       </div>
       <div>
-        <mwc-icon>copyright</mwc-icon> HatioSEA Inc.
-        <span>OPA-APP is built on several <a href="#">open source software</a></span>
+        <span>${ENV['APP-LICENSE']}</span>
+        <span
+          >Powered by &trade;Things Factory <i18n-msg msgid="field.version"></i18n-msg> ${ENV['SHELL-VERSION']}</span
+        >
+        <span
+          >${appTitle} is built on several
+          <a href="#" @click=${e => this.onClickOpenSourceLicense(e)}>open source software</a></span
+        >
       </div>
-      <!-- <span positionR><i18n-msg msgid="field.license"></i18n-msg> : ${ENV['APP-LICENSE']}</span> -->
     `
+  }
+
+  onClickOpenSourceLicense(e) {
+    e.preventDefault()
+    e.stopPropagation()
+
+    openPopup(
+      html`
+        <opensource-license></opensource-license>
+      `,
+      {
+        backdrop: true,
+        size: 'large',
+        title: 'Open Source Licenses'
+      }
+    )
   }
 }
 
