@@ -11,13 +11,26 @@ export class OpenSourceLicense extends LitElement {
           flex-direction: row;
 
           background-color: white;
+          padding: 12px 5px 12px 15px;
+
+          font-size: 13px;
+          color: #333;
         }
 
         [licenses] {
           flex: 1;
           overflow: auto;
-
-          padding: 15px;
+          margin: 0;
+          padding: 0;
+        }
+        li::before {
+          content: '- ';
+        }
+        li {
+          padding: 2px 0 1px 0;
+        }
+        a {
+          color: #22a6a7;
         }
       `
     ]
