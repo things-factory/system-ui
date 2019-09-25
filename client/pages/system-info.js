@@ -1,14 +1,16 @@
-import { LitElement, html, css } from 'lit-element'
+import { html, css } from 'lit-element'
 
+import { PageView } from '@things-factory/shell'
 import { ENV } from '@things-factory/system-base'
-import '@things-factory/i18n-base'
+import { i18next, localize } from '@things-factory/i18n-base'
 import { openPopup } from '@things-factory/layout-base'
+import '@things-factory/i18n-base'
 
 import '../viewparts/opensource-license'
 
 import logo from '../../assets/images/hatiolab-logo.png'
 
-class SystemInfo extends LitElement {
+class SystemInfo extends localize(i18next)(PageView) {
   static get styles() {
     return css`
       :host {
@@ -41,6 +43,12 @@ class SystemInfo extends LitElement {
         float: right;
       }
     `
+  }
+
+  get context() {
+    return {
+      title: i18next.t('label.about-system')
+    }
   }
 
   get applicationMeta() {
