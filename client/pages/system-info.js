@@ -15,6 +15,7 @@ class SystemInfo extends localize(i18next)(PageView) {
     return css`
       :host {
         display: block;
+        position: relative;
         text-align: center;
 
         background-color: var(--system-info-background-color);
