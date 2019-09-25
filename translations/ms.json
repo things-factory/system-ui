@@ -1,5 +1,6 @@
 {
   "field.system brief": "ringkasan sistem",
   "field.version": "versi",
-  "field.license": "lesen"
+  "field.license": "lesen",
+  "label.about-system": "label.about-system"
 }
