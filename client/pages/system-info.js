@@ -15,32 +15,49 @@ class SystemInfo extends localize(i18next)(PageView) {
     return css`
       :host {
         display: block;
+        position: relative;
+        text-align: center;
 
-        background-color: var(--setting-info-background-color);
-        padding: var(--setting-content-padding);
-        font: var(--setting-info-font);
-        color: var(--setting-info-color);
+        background-color: var(--system-info-background-color);
+        padding: var(--system-info-content-padding);
+        color: var(--system-info-color);
+        font: var(--system-info-font);
       }
       :host * {
         vertical-align: middle;
       }
       div {
-        padding: 2px;
-      }
-      mwc-icon {
-        font-size: 14px;
-        color: var(--setting-info-color);
+        padding: 10px;
       }
       strong {
-        color: var(--setting-info-appname-color);
+        font: var(--system-info-appname-font);
+        color: var(--system-info-appname-color);
       }
       span {
         display: block;
-        text-indent: 18px;
-        font-size: 12px;
       }
-      [positionR] {
-        float: right;
+      span.description {
+        padding: 3px 10px;
+        font: var(--system-info-description-font);
+        color: var(--system-info-description-color);
+      }
+      span.version {
+        display: inline-block;
+        border-radius: 5px;
+        opacity: 0.8;
+        background-color: var(--system-info-version-background-color);
+        padding: 3px 10px;
+        font: var(--system-info-version-font);
+        color: var(--system-info-version-color);
+      }
+      .poweredBy {
+        background-color: #efefef;
+        position: absolute;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 7px 0;
+        width: 100%;
+        bottom: 0;
+        text-align: center;
       }
     `
   }
@@ -76,20 +93,25 @@ class SystemInfo extends localize(i18next)(PageView) {
       <img src=${icon} />
 
       <div>
-        <mwc-icon>info</mwc-icon>
         <strong>${title}</strong>
-        <span>${description}</span>
-        <i18n-msg msgid="field.version"></i18n-msg> : ${ENV['APP-VERSION']}-${ENV['NODE-ENV']}
+        <span class="description">${description}</span>
+        <span class="version"
+          ><i18n-msg msgid="field.version"></i18n-msg> : ${ENV['APP-VERSION']}-${ENV['NODE-ENV']}</span
+        >
       </div>
 
       <div>
         <span>${copyright}</span>
-        <span
-          >Powered by &trade;Things Factory <i18n-msg msgid="field.version"></i18n-msg> ${ENV['SHELL-VERSION']}</span
-        >
+
         <span
           >${title} is built on several
           <a href="#" @click=${e => this.onClickOpenSourceLicense(e)}>open source software</a></span
+        >
+      </div>
+
+      <div class="poweredBy">
+        <span
+          >Powered by &trade;Things Factory <i18n-msg msgid="field.version"></i18n-msg> ${ENV['SHELL-VERSION']}</span
         >
       </div>
     `
