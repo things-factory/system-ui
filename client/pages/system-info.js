@@ -1,66 +1,107 @@
-import { html, css } from 'lit-element'
-import { connect } from 'pwa-helpers/connect-mixin.js'
-import { store, PageView } from '@things-factory/shell'
+import { LitElement, html, css } from 'lit-element'
 
-class SystemInfo extends connect(store)(PageView) {
-  static get properties() {
-    return {
-      modules: Object
-    }
-  }
+import { ENV } from '@things-factory/system-base'
+import '@things-factory/i18n-base'
+import { openPopup } from '@things-factory/layout-base'
 
+import '../viewparts/opensource-license'
+
+import logo from '../../assets/images/hatiolab-logo.png'
+
+class SystemInfo extends LitElement {
   static get styles() {
-    return [
-      css`
-        :host {
-          overflow: auto;
-        }
+    return css`
+      :host {
+        display: block;
 
-        .module {
-          margin: 10px;
-        }
-
-        label {
-          color: red;
-        }
-      `
-    ]
-  }
-
-  get context() {
-    return {
-      title: 'System Information'
-    }
-  }
-
-  render() {
-    return html`
-      ${this.modules.map(
-        m => html`
-          <div class="module">
-            <div>
-              <label>name</label>
-              ${m.name}
-            </div>
-
-            <div>
-              <label>version</label>
-              ${m.version}
-            </div>
-
-            <div>
-              <label>license</label>
-              ${m.license}
-            </div>
-          </div>
-        `
-      )}
+        background-color: var(--setting-info-background-color);
+        padding: var(--setting-content-padding);
+        font: var(--setting-info-font);
+        color: var(--setting-info-color);
+      }
+      :host * {
+        vertical-align: middle;
+      }
+      div {
+        padding: 2px;
+      }
+      mwc-icon {
+        font-size: 14px;
+        color: var(--setting-info-color);
+      }
+      strong {
+        color: var(--setting-info-appname-color);
+      }
+      span {
+        display: block;
+        text-indent: 18px;
+        font-size: 12px;
+      }
+      [positionR] {
+        float: right;
+      }
     `
   }
 
-  stateChanged(state) {
-    this.modules = state.app.modules
+  get applicationMeta() {
+    if (!this._applicationMeta) {
+      var iconLink = document.querySelector('link[rel="application-icon"]')
+      var titleMeta = document.querySelector('meta[name="application-name"]')
+      var descriptionMeta = document.querySelector('meta[name="application-description"]')
+      var copyrightMeta = document.querySelector('meta[name="application-copyright"]')
+
+      this._applicationMeta = {
+        icon: iconLink ? iconLink.href : logo,
+        title: titleMeta ? titleMeta.content : 'Things Factory',
+        description: descriptionMeta ? descriptionMeta.content : 'Reimagining Software',
+        copyright: copyrightMeta ? copyrightMeta.content : 'Copyright © hatiolab.com. All Rights Reserved." />'
+      }
+    }
+
+    return this._applicationMeta
+  }
+
+  render() {
+    var { icon, title, description, copyright } = this.applicationMeta
+
+    return html`
+      <img src=${icon} />
+
+      <div>
+        <mwc-icon>info</mwc-icon>
+        <strong>${title}</strong>
+        <span>${description}</span>
+        <i18n-msg msgid="field.version"></i18n-msg> : ${ENV['APP-VERSION']}-${ENV['NODE-ENV']}
+      </div>
+
+      <div>
+        <span>${copyright}</span>
+        <span
+          >Powered by &trade;Things Factory <i18n-msg msgid="field.version"></i18n-msg> ${ENV['SHELL-VERSION']}</span
+        >
+        <span
+          >${title} is built on several
+          <a href="#" @click=${e => this.onClickOpenSourceLicense(e)}>open source software</a></span
+        >
+      </div>
+    `
+  }
+
+  onClickOpenSourceLicense(e) {
+    e.preventDefault()
+    e.stopPropagation()
+
+    openPopup(
+      html`
+        <opensource-license></opensource-license>
+      `,
+      {
+        backdrop: true,
+        size: 'large',
+        title: 'Open Source Licenses'
+      }
+    )
   }
 }
 
-window.customElements.define('system-info', SystemInfo)
+customElements.define('system-info', SystemInfo)
