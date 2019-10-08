@@ -1,7 +1,7 @@
 body {
   /* system info style */
   --system-info-background-color: var(--main-section-background-color);
-  --system-info-content-padding: 10vh 0 0 0;
+  --system-info-content-padding: 40px 0 0 0;
   --system-info-font: normal 14px/24px var(--theme-font);
   --system-info-color: #666;
   --system-info-appname-color: var(--secondary-color);
