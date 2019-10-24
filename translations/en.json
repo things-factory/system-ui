@@ -1,6 +1,7 @@
 {
+  "field.license": "license",
   "field.system brief": "system brief",
   "field.version": "version",
-  "field.license": "license",
-  "label.about-system": "about system"
+  "label.about-system": "about system",
+  "label.system reload": "system reload"
 }

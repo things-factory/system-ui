@@ -1,14 +1,12 @@
-import { html, css } from 'lit-element'
-
-import { PageView } from '@things-factory/shell'
-import { ENV } from '@things-factory/system-base'
+import '@material/mwc-button'
+import '@things-factory/i18n-base'
 import { i18next, localize } from '@things-factory/i18n-base'
 import { openPopup } from '@things-factory/layout-base'
-import '@things-factory/i18n-base'
-
-import '../viewparts/opensource-license'
-
+import { PageView } from '@things-factory/shell'
+import { ENV } from '@things-factory/system-base'
+import { css, html } from 'lit-element'
 import logo from '../../assets/images/hatiolab-logo.png'
+import '../viewparts/opensource-license'
 
 class SystemInfo extends localize(i18next)(PageView) {
   static get styles() {
@@ -25,6 +23,10 @@ class SystemInfo extends localize(i18next)(PageView) {
       }
       :host * {
         vertical-align: middle;
+      }
+      #refresh-button {
+        border-radius: var(--border-radius);
+        border: 1px solid rgba(0, 0, 0, 0.1);
       }
       div {
         padding: 10px;
@@ -98,6 +100,17 @@ class SystemInfo extends localize(i18next)(PageView) {
         <span class="version"
           ><i18n-msg msgid="field.version"></i18n-msg> : ${ENV['APP-VERSION']}-${ENV['NODE-ENV']}</span
         >
+      </div>
+
+      <div>
+        <mwc-button
+          id="refresh-button"
+          icon="refresh"
+          label="${i18next.t('label.system reload')}"
+          @click=${e => {
+            location.reload()
+          }}
+        ></mwc-button>
       </div>
 
       <div>
