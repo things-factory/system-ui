@@ -108,7 +108,7 @@ class SystemInfo extends localize(i18next)(PageView) {
           icon="refresh"
           label="${i18next.t('label.system reload')}"
           @click=${e => {
-            location.reload()
+            location.reload(true)
           }}
         ></mwc-button>
       </div>
