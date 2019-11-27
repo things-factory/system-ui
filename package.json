@@ -1,6 +1,6 @@
 {
   "name": "@things-factory/system-ui",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "main": "dist-server/index.js",
   "browser": "client/index.js",
   "things-factory": true,
@@ -23,7 +23,6 @@
     "migration:revert": "node ./node_modules/typeorm/cli.js migration:revert"
   },
   "dependencies": {
-    "@material/mwc-button": "^0.8.0",
     "@things-factory/i18n-base": "^1.0.0-alpha.1",
     "@things-factory/layout-base": "^1.0.0-alpha.1",
     "@things-factory/more-base": "^1.0.0-alpha.1",
