@@ -2,5 +2,6 @@
   "field.system brief": "系统简介",
   "field.version": "版本",
   "field.license": "执照",
-  "label.about-system": "label.about-system"
+  "label.about-system": "[zh]about-system",
+  "label.system reload": "[zh]system reload"
 }
