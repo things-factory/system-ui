@@ -2,6 +2,6 @@
   "field.system brief": "ringkasan sistem",
   "field.version": "versi",
   "field.license": "lesen",
-  "label.about-system": "[ms]about-system",
-  "label.system reload": "[ms]system reload"
+  "label.about-system": "maklumat sistem",
+  "label.system reload": "muat semula sistem"
 }
